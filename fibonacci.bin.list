@@ -1,0 +1,64 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+Fibonacci.bin -- emu8086 assembler version: 4.08  
+ 
+[ 20/04/2016  --  09:58:30 p. m. ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       ; FIBONACCI 8-bits en leds
+[   2]        :                                       
+[   3]        :                                       org 00000h
+[   4]        :                                       
+[   5]    0000: B8 00 00                              mov ax, 0000h
+[   6]    0003: 8E D8                                 mov ds, ax
+[   7]        :                                       
+[   8]    0005:                                       init:
+[   9]    0005: B0 00                                 mov al, 00h
+[  10]    0007: B4 01                                 mov ah, 01h
+[  11]    0009: B7 00                                 mov bh, 00h
+[  12]    000B: B9 FF FF                              mov cx, 0xffff
+[  13]    000E: B6 0C                                 mov dh, 0ch
+[  14]    0010: BD FF FF                              mov bp, 0xffff
+[  15]        :                                       
+[  16]    0013: A2 FF FF                              mov [0ffffh], al
+[  17]    0016: EB 0F                                 jmp delay
+[  18]        :                                       
+[  19]    0018:                                       fibo:
+[  20]    0018: B9 FF FF                              mov cx, 0xffff
+[  21]    001B: 02 E0                                 add ah, al
+[  22]    001D: 8A FC                                 mov bh, ah
+[  23]    001F: 8A E0                                 mov ah, al
+[  24]    0021: 8A C7                                 mov al, bh
+[  25]    0023: 88 3E FF 0F                           mov [0fffh], bh
+[  26]        :                                       
+[  27]    0027:                                       delay:
+[  28]    0027: BD FF FF                              mov bp, 0xffff
+[  29]        :                                       
+[  30]    002A:                                       moredelay:
+[  31]    002A: 83 FD 00                              cmp bp, 0000h
+[  32]    002D: 4D                                    dec bp
+[  33]    002E: 7E FA                                 jle moredelay
+[  34]        :                                       
+[  35]    0030: 83 F9 00                              cmp cx, 0000h
+[  36]    0033: 49                                    dec cx
+[  37]    0034: 7E F1                                 jle delay
+[  38]        :                                       
+[  39]    0036: FE CE                                 dec dh
+[  40]    0038: 80 FE 00                              cmp dh, 00h
+[  41]    003B: 7F DB                                 jg fibo
+[  42]        :                                       
+[  43]    003D: EB C6                                 jmp init
+[  44]        :                                       
+[  45]        :                                       
+[  46]        :                                       
+ 
+===================================================================================================
+ 
+
+
+
+
+===================================================================================================

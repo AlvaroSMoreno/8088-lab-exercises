@@ -1,0 +1,49 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+mycode.bin -- emu8086 assembler version: 4.08  
+ 
+[ 07/06/2017  --  12:01:33 a. m. ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       
+[   2]        :                                       ; You may customize this and other start-up templates;
+[   3]        :                                       ; The location of this template is c:\emu8086\inc\0_com_template.txt
+[   4]        :                                       
+[   5]        :                                       org 0000h
+[   6]        :                                       
+[   7]    0000:                                       tag:
+[   8]    0000: B8 00 20                              mov ax, 2000h
+[   9]    0003: 8E D8                                 mov ds, ax
+[  10]        :                                       
+[  11]    0005: 8A 1E 00 00                           mov bl, [0000h]
+[  12]    0009: 8A CB                                 mov cl, bl      ;added
+[  13]    000B: 80 E1 80                              and cl, 0x80    ;added
+[  14]    000E: 75 0B                                 jnz func        ;added
+[  15]        :                                       
+[  16]        :                                       
+[  17]    0010: B8 00 00                              mov ax, 0000h
+[  18]    0013: 8E D8                                 mov ds, ax
+[  19]        :                                       
+[  20]    0015: 88 1E 00 00                           mov [0000h], bl
+[  21]        :                                       
+[  22]    0019: EB E5                                 jmp tag
+[  23]        :                                       
+[  24]    001B:                                       func:           ;added
+[  25]    001B: 8A CB                                 mov cl, bl      ;added
+[  26]    001D: 80 E1 7F                              and cl, 0x7F    ;added
+[  27]    0020: F6 D1                                 not cl          ;added
+[  28]    0022: FE C1                                 inc cl          ;added
+[  29]    0024: 8A D9                                 mov bl, cl      ;added
+[  30]    0026: C3                                    ret             ;added
+[  31]        :                                       
+ 
+===================================================================================================
+ 
+
+
+
+
+===================================================================================================
